@@ -22,4 +22,4 @@ interface = "127.0.0.1"
 # Logging pattern (`<module>=<level>`, e.g. `own_tx=trace`).
 logging = "own_tx=trace"
 # Logs will be stored at
-log_file = "C:/Users/QK148GL/AppData/Roaming/Parity/Ethereum/parity.log"
+log_file = "%AppData%/Parity/Ethereum/parity.log"
