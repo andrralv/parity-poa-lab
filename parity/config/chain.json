@@ -1,0 +1,42 @@
+{
+  "name": "TBDEY",
+  "engine": {
+    "authorityRound": {
+      "params": {
+        "gasLimitBoundDivisor": "0x400",
+        "stepDuration": "1",
+        "validators": {
+          "list": [
+            "0x00210e7f10ffec3763ec313c8f0a74e157de7c2e",
+            "0x00da33f8bfeffb0cda0ec76ea41c49fcb546f8d9",
+            "0x00105c16b4336f80db833a1848ec03f981c2dea1",
+	          "0x00e1185b21984d79e27f2b83dc063fbdbde12c17"
+          ]
+        }
+      }
+    }
+  },
+    "params": {
+        "maximumExtraDataSize": "0x20",
+        "minGasLimit": "0x1388",
+        "networkID" : "0x2323"
+    },
+    "genesis": {
+        "seal": {
+            "authorityRound": {
+                "step": "0x0",
+                "signature": "0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+            }
+        },
+        "difficulty": "0x20000",
+        "gasLimit": "0x5B8D80"
+    },
+    "accounts": {
+        "0x0000000000000000000000000000000000000001": { "balance": "1", "builtin": { "name": "ecrecover", "pricing": { "linear": { "base": 3000, "word": 0 } } } },
+        "0x0000000000000000000000000000000000000002": { "balance": "1", "builtin": { "name": "sha256", "pricing": { "linear": { "base": 60, "word": 12 } } } },
+        "0x0000000000000000000000000000000000000003": { "balance": "1", "builtin": { "name": "ripemd160", "pricing": { "linear": { "base": 600, "word": 120 } } } },
+        "0x0000000000000000000000000000000000000004": { "balance": "1", "builtin": { "name": "identity", "pricing": { "linear": { "base": 15, "word": 3 } } } },
+        "0x00210e7f10ffec3763ec313c8f0a74e157de7c2e": { "balance": "10000000000000000000000" }
+    }
+}
+

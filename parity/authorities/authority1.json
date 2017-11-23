@@ -1,0 +1,22 @@
+{
+    "address": "00da33f8bfeffb0cda0ec76ea41c49fcb546f8d9",
+    "crypto": {
+        "cipher": "aes-128-ctr",
+        "cipherparams": {
+            "iv": "ef9320a61c2b1e7b138041d89bd0ce02"
+        },
+        "ciphertext": "6b5691e2adcef406914dc3b6539fc84880ce1c27a2d84e8720b4bed0f32d5762",
+        "kdf": "pbkdf2",
+        "kdfparams": {
+            "c": 10240,
+            "dklen": 32,
+            "prf": "hmac-sha256",
+            "salt": "9c275e6efedfe6863a5843267c3c6f175a774f3eeaaa5433a96f814328b8bb7e"
+        },
+        "mac": "8f35bc7ef8e8cbe5f822150768eb7b2d9e24d87c326fc79154b933b079cd1796"
+    },
+    "id": "231903c4-fa6f-884e-34d8-95bdba2cd42f",
+    "meta": "{\"description\":\"\",\"passwordHint\":\"\",\"timestamp\":1511462438177}",
+    "name": "Authority1",
+    "version": 3
+}

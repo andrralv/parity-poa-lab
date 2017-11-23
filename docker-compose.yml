@@ -1,0 +1,103 @@
+version: '2.0'
+services:
+  authority0:
+    image: parity/parity:${PARITY_VERSION}
+    command:
+      --config /parity/config/authority.toml 
+      --unsafe-expose
+      --ui-no-validation ui
+      --engine-signer 0x00210e7f10ffec3763ec313c8f0a74e157de7c2e
+    volumes:
+      - ./parity/config:/parity/config:ro
+      - authority0:/root/.local/share/io.parity.ethereum/
+      - ./parity/authorities/authority0.json:/root/.local/share/io.parity.ethereum/keys/${NETWORK_NAME}/authority.json:ro
+#      - ./parity/keys:/root/.local/share/io.parity.ethereum/keys/${NETWORK_NAME}
+      - ./parity/authorities/authority0.pwd:/parity/authority.pwd:ro
+      - ./parity/node0.network.key:/root/.local/share/io.parity.ethereum/network/key:ro
+    ports:
+      - 8545:8545
+      - 8546:8546
+      - 8180:8180
+    networks:
+      app_net:
+        ipv4_address: 172.16.0.10
+
+
+  authority1:
+    image: parity/parity:${PARITY_VERSION}
+    command:
+      --config /parity/config/authority.toml
+      --engine-signer 0x00da33f8bfeffb0cda0ec76ea41c49fcb546f8d9
+    volumes:
+      - ./parity/config:/parity/config:ro
+      - authority1:/root/.local/share/io.parity.ethereum/
+      - ./parity/authorities/authority1.json:/root/.local/share/io.parity.ethereum/keys/${NETWORK_NAME}/authority.json:ro
+      - ./parity/authorities/authority1.pwd:/parity/authority.pwd:ro
+      - ./parity/node1.network.key:/root/.local/share/io.parity.ethereum/network/key:ro
+    networks:
+      app_net:
+        ipv4_address: 172.16.0.11
+
+
+  authority2:
+    image: parity/parity:${PARITY_VERSION}
+    command:
+      --config /parity/config/authority.toml
+      --engine-signer 0x00105c16b4336f80db833a1848ec03f981c2dea1
+    volumes:
+      - ./parity/config:/parity/config:ro
+      - authority2:/root/.local/share/io.parity.ethereum/
+      - ./parity/authorities/authority2.json:/root/.local/share/io.parity.ethereum/keys/${NETWORK_NAME}/authority.json:ro
+      - ./parity/authorities/authority2.pwd:/parity/authority.pwd:ro
+      - ./parity/node2.network.key:/root/.local/share/io.parity.ethereum/network/key:ro
+    networks:
+      app_net:
+        ipv4_address: 172.16.0.12
+
+  authority3:
+    image: parity/parity:${PARITY_VERSION}
+    command:
+      --config /parity/config/authority.toml
+      --engine-signer 0x00e1185b21984d79e27f2b83dc063fbdbde12c17
+    volumes:
+      - ./parity/config:/parity/config:ro
+      - authority3:/root/.local/share/io.parity.ethereum/
+      - ./parity/authorities/authority3.json:/root/.local/share/io.parity.ethereum/keys/${NETWORK_NAME}/authority.json:ro
+      - ./parity/authorities/authority3.pwd:/parity/authority.pwd:ro
+      - ./parity/node3.network.key:/root/.local/share/io.parity.ethereum/network/key:ro
+    networks:
+      app_net:
+        ipv4_address: 172.16.0.13
+
+  monitor:
+    image: buythewhale/ethstats_monitor
+    volumes:
+      - ./monitor/app.json:/home/ethnetintel/eth-net-intelligence-api/app.json:ro
+    networks:
+      app_net:
+        ipv4_address: 172.16.0.100
+
+  dashboard:
+    image: buythewhale/ethstats
+    volumes:
+      - ./dashboard/ws_secret.json:/eth-netstats/ws_secret.json:ro
+    ports:
+      - 3001:3000
+    networks:
+      app_net:
+        ipv4_address: 172.16.0.200
+
+volumes:
+  authority0:
+  authority1:
+  authority2:
+  authority3:
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.16.0.1/24
+        gateway: 172.16.0.1
+
